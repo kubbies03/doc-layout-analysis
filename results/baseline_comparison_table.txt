@@ -1,0 +1,36 @@
+================================================================================
+  BASELINE COMPARISON — Content Recall & Table F1
+  n=100 samples  |  n_table=22 samples with table
+================================================================================
+Method                     Content Recall   Table F1    Cost/page   Latency(s)
+--------------------------------------------------------------------------------
+Pipeline (cached)                   0.923      0.962      $0.0038            —
+Pipeline (live)                     0.977      0.939      $0.0035        16.7s
+PyMuPDF/pdfplumber                  0.995      0.630      $0.0000        0.01s
+docTR full-page OCR                 0.994      0.643      $0.0000        0.97s
+Gemini Vision full-page             0.992      0.981      $0.0025       10.18s
+================================================================================
+
+COST ANALYSIS:
+--------------------------------------------------------------------------------
+  Pipeline (live) — 100 samples measured:
+    Cost/page (mean):  $0.003500
+    Cost/page (min):   $0.000000
+    Cost/page (max):   $0.006832
+    Cost/1000 pages:   $3.50
+    Total this run:    $0.35
+
+  Gemini Vision — 89 samples measured:
+    Cost/page (mean):  $0.002500
+    Cost/1000 pages:   $2.50
+    Total this run:    $0.22
+    Cheaper than Pipeline:  0.7x
+
+================================================================================
+
+Notes:
+  Content Recall = fraction of GT tokens present in output (fuzzy matching)
+  Table F1        = token F1 on table content
+  Pipeline live cost = input_tokens * $0.30/M + output_tokens * $2.50/M
+  UPPER BOUND NOTE: Pipeline recall/F1 has circular dependency (GT = Gemini GT)
+    -> actual results vs human annotation may be lower

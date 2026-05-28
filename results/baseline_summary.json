@@ -1,0 +1,62 @@
+{
+  "n_samples": 100,
+  "n_with_table": 22,
+  "pipeline_cached": {
+    "content_recall_mean": 0.9226,
+    "table_f1_mean": 0.9616,
+    "cost_per_page_usd": 0.0038,
+    "note": "cached from eval CSVs (485-sample run)"
+  },
+  "pipeline_live": {
+    "content_recall_mean": 0.9765,
+    "table_f1_mean": 0.9391,
+    "latency_s_mean": 16.6755,
+    "cost_per_page_usd": 0.0035
+  },
+  "b1_pymupdf": {
+    "content_recall_mean": 0.9954,
+    "table_f1_mean": 0.6298,
+    "latency_s_mean": 0.0077,
+    "cost_per_page_usd": 0.0
+  },
+  "b2_doctr": {
+    "content_recall_mean": 0.9941,
+    "table_f1_mean": 0.6428,
+    "latency_s_mean": 0.9698,
+    "cost_per_page_usd": 0.0
+  },
+  "b3_gemini_vision": {
+    "content_recall_mean": 0.992,
+    "table_f1_mean": 0.9809,
+    "latency_s_mean": 10.1777,
+    "cost_per_page_usd": 0.0025
+  },
+  "cost_analysis": {
+    "pipeline_live": {
+      "cost_per_page_usd_mean": 0.0035,
+      "cost_per_page_usd_min": 0.0,
+      "cost_per_page_usd_max": 0.006832,
+      "cost_per_1000_pages_usd": 3.5,
+      "total_spent_this_run_usd": 0.3463,
+      "n_samples_measured": 100
+    },
+    "b3_gemini_vision": {
+      "cost_per_page_usd_mean": 0.0025,
+      "cost_per_1000_pages_usd": 2.5,
+      "total_spent_this_run_usd": 0.2203,
+      "n_samples_measured": 89
+    },
+    "b1_pymupdf": {
+      "cost_per_page_usd": 0.0,
+      "cost_per_1000_pages_usd": 0.0
+    },
+    "b2_doctr": {
+      "cost_per_page_usd": 0.0,
+      "cost_per_1000_pages_usd": 0.0
+    },
+    "comparison_vs_pipeline_live": {
+      "b3_multiplier": 0.7,
+      "note": "Gemini Vision cost / Pipeline live cost — how many times more expensive"
+    }
+  }
+}
